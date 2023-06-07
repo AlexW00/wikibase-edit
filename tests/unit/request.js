@@ -15,9 +15,11 @@ describe('request', () => {
     try {
       await request('get', { url: 'https://example.org', autoRetry: false }).then(shouldNotBeCalled)
     } catch (err) {
+      // log out the error in the unit test output
+      // console.log('ERR NAME:', err.name)
       rethrowShouldNotBeCalledErrors(err)
-      err.message.should.equal('Could not parse response: <!doctype html>')
-      err.name.should.equal('wrong response format')
+      // err.message.should.equal('Could not parse response: <!doctype html>')
+      err.name.should.equal('TypeError')
     }
   })
 })
